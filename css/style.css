@@ -40,6 +40,16 @@ a:hover{
 }
 
 
+.special{
+    border: none;
+}
+
+
+.special:hover{
+    text-decoration: none;
+}
+
+
 
 
 @media screen and (max-width: 800px) {

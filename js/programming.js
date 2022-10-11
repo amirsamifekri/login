@@ -86,12 +86,7 @@ document.querySelector("#takeMainButton").addEventListener("click" , function(){
         document.querySelector(".takeMessageNotComplete").classList.remove('d-none');
     }
     else{
-        document.querySelector(".takeMessageCorrect").classList.remove('d-none');
-        takeData()
-        takeName.value = "";
-        takeEmail.value = "";
-        takePassword.value = "";
-        document.querySelector(".takeMessageNotComplete").classList.add('d-none');
+        revision ();
         
     }
 
@@ -99,7 +94,37 @@ document.querySelector("#takeMainButton").addEventListener("click" , function(){
 })}
 
 
+function revision (){
+
+    var test = false;
+
+for(var i=0; i<allData.length; i++){
+
+
+    if( takeName.value == allData[i].Name   &&  takeEmail.value == allData[i].Email  &&  takePassword.value == allData[i].Password ){
+        document.querySelector(".takeMessageExist").classList.remove("d-none");
+        test = true;
+    document.querySelector(".takeMessageCorrect").classList.add('d-none');
+
+    }
+
+
+  }
+
+if (test == false){
+    takeData();
+}
+
+
+}
+
+
+
+
+
 function takeData(){
+    document.querySelector(".takeMessageExist").classList.add("d-none");
+
 
 var myData = {
     Name : takeName.value ,
@@ -107,11 +132,36 @@ var myData = {
     Password : takePassword.value 
 }
 
-allData.push(myData);
-localStorage.setItem("Data" , JSON.stringify(allData))
 
-console.log(allData);
+allData.push(myData);
+localStorage.setItem("Data" , JSON.stringify(allData));
+document.querySelector(".takeMessageCorrect").classList.remove('d-none');
+
+
+clearData ();
+
 }
+
+
+
+
+
+function clearData (){
+
+    takeName.value = "";
+    takeEmail.value = "";
+    takePassword.value = "";
+    document.querySelector(".takeMessageNotComplete").classList.add('d-none');
+    
+}
+
+
+
+
+
+
+
+
 
 
 
