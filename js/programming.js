@@ -101,7 +101,7 @@ function revision (){
 for(var i=0; i<allData.length; i++){
 
 
-    if( takeName.value == allData[i].Name   &&  takeEmail.value == allData[i].Email  &&  takePassword.value == allData[i].Password ){
+    if(   takeEmail.value == allData[i].Email   ){
         document.querySelector(".takeMessageExist").classList.remove("d-none");
         test = true;
     document.querySelector(".takeMessageCorrect").classList.add('d-none');
